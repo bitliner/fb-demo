@@ -1,0 +1,155 @@
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+  <style>
+    body {
+      margin: 20px;
+    }
+
+    .loader {
+      border: 16px solid #f3f3f3;
+      /* Light grey */
+      border-top: 16px solid #3498db;
+      /* Blue */
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <h1>Demo app</h1>
+
+
+    </div>
+    <div class="row">
+      <blockquote>
+        <p>
+          <em>
+            This app allows you to extract the topics and their number of mentions from the content of a facebook page.
+            For demo purpose, it only runs on the Facebook page <a
+              href="https://www.facebook.com/Example-posts-558246594702868"
+              target="_blank">Example-posts-558246594702868</a>
+          </em>
+        </p>
+      </blockquote>
+    </div>
+    <div class="row">
+      <a class="button" href="#" onclick="startAnalysis()">Start analysis</a>
+    </div>
+
+    <div class="row loader-container" style="margin-top:40px;display:none;">
+      <div class="loader"></div>
+    </div>
+
+    <div class="analysis-results" style="display:none;">
+      <div class="row" style="margin-top:40px">
+        <h2>Stats</h2>
+      </div>
+      <div class="row">
+        <table>
+          <thead>
+            <tr>
+              <td> <b>topic</b> </td>
+              <td><b>mentions </b></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>functionality</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>easy of use</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>overall satisfaction</td>
+              <td>1</td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+      <div class="row" style="margin-top:40px">
+        <h2>Posts</h2>
+      </div>
+
+      <div class="row">
+        <h4>Post 1</h4>
+      </div>
+      <div class="row">
+        <div class="column">
+          <p>
+            <i>it works well. Love the ease. It's amazing</i>
+            (<a
+              href="https://www.facebook.com/permalink.php?story_fbid=558248031369391&id=558246594702868&__cft__[0]=AZUEE4WLaOy3NwnWjsYtz_DFwL0HasHesrLiyP2UQ3LDfX0pOPobJkFJEVPJ6u9OWz1DcKoUKkPw_Iwx7JyBiByXLxtJtRkh7hyjAqfw5cngbL_QiMcnIT02eXIDHRp7YKZEuvBf3FKZ66fcI7hw4BumS7IL_69wyRLzvAxiHyh0Dw&__tn__=%2CO%2CP-R"
+              target="_blank">Link</a>)
+          </p>
+        </div>
+        <div class="column">
+          <p><b>Topics</b>: functionality, easy of use, overall satisfaction</p>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <h4>Post 2</h4>
+      </div>
+      <div class="row">
+        <div class="column">
+          <p>
+            <i>this app works well</i>
+            (<a
+              href="https://www.facebook.com/permalink.php?story_fbid=558247501369444&id=558246594702868&__cft__[0]=AZWJ99zgFCIZEQ12kFVUpsZzgklNTWfiD2maXnG9n1a3O4ugNF4xEQ5niBgR0zFgMmDldxbBF72aqWbAqP_FJCrzxu2YBdaTPejyZSaNhfqXtkS6tEOTKZh_wwBXQ2Be5V8Oiln_y9TOWMMSc0Ouv6HD394BUUPOloZ6-58as0dq6A&__tn__=%2CO%2CP-R"
+              target="_blank">Link</a>)
+          </p>
+        </div>
+        <div class="column">
+          <p><b>Topics</b>: functionality</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    function wait(ms) {
+      return new Promise((resolve) => {
+        setTimeout(() => resolve(), ms)
+      })
+    }
+    window.startAnalysis = async function startAnalysis() {
+      const pageName = 'pageName'
+      const url = 'url'
+
+      const l1 = `I'm going to download and analyze content from ${pageName} page.`
+      const l2 = `Url is ${url}`
+      alert(`${l1}\n${l2}`)
+
+      document.querySelector('.loader-container').style.display = 'block'
+
+      await wait(2000)
+
+      document.querySelector('.loader-container').style.display = 'none'
+      document.querySelector('.analysis-results').style.display = 'block'
+
+
+    }
+  </script>
+</body>
