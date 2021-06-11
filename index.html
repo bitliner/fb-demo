@@ -31,11 +31,13 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default"
+    data-auto-logout-link="false" data-use-continue-as="false" onlogin="checkLoginState()">
+  </div>
+
+  <div class="container" style="display:none;">
     <div class="row">
-      <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with"
-        data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" onlogin="checkLoginState()">
-      </div>
+
     </div>
     <div class="row">
       <h1>Demo app</h1>
@@ -177,7 +179,9 @@
   <script>
     function statusChangeCallback(response) {
       if (response.status === 'connected') {
-        alert('connected')
+        // alert('connected')
+        const el = document.querySelector('.container')
+        el.style.display = 'block'
       }
     }
 
