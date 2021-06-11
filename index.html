@@ -174,9 +174,15 @@
     src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v11.0&appId=2630182130331751&autoLogAppEvents=1"
     nonce="QSPHZDis"></script>
   <script>
-    FB.getLoginStatus(function(response) {
+    window.fbAsyncInit = function () {
+//       FB.Event.subscribe('xfbml.onlogin', () => {
+//         alert('logged in')
+//       })
+      FB.getLoginStatus(function(response) {
       alert(JSON.stringify(response,null,4))
       // statusChangeCallback(response);
-    });
+    })
+    }
+    
   </script>
 </body>
