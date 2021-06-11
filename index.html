@@ -174,8 +174,10 @@
     src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v11.0&appId=2630182130331751&autoLogAppEvents=1"
     nonce="QSPHZDis"></script>
   <script>
-    FB.Event.subscribe('xfbml.onlogin', () => {
-      alert('logged in')
-    })
+    window.fbAsyncInit = function () {
+      FB.Event.subscribe('xfbml.onlogin', () => {
+        alert('logged in')
+      })
+    }
   </script>
 </body>
