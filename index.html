@@ -33,6 +33,10 @@
 <body>
   <div class="container">
     <div class="row">
+      <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with"
+        data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+    </div>
+    <div class="row">
       <h1>Demo app</h1>
 
 
@@ -62,6 +66,9 @@
         <h2>Stats</h2>
       </div>
       <div class="row">
+        <p>Your page is speaking about the following topics:</p>
+      </div>
+      <div class="row">
         <table>
           <thead>
             <tr>
@@ -86,45 +93,50 @@
 
         </table>
       </div>
-      <div class="row" style="margin-top:40px">
-        <h2>Posts</h2>
+      <div class="row">
+        <p>
+          <a class="button" href="#" onclick="compare()">Click here to compare it with a competitor page.</a>
+        </p>
       </div>
 
-      <div class="row">
-        <h4>Post 1</h4>
-      </div>
-      <div class="row">
-        <div class="column">
-          <p>
-            <i>it works well. Love the ease. It's amazing</i>
-            (<a
-              href="https://www.facebook.com/permalink.php?story_fbid=558248031369391&id=558246594702868&__cft__[0]=AZUEE4WLaOy3NwnWjsYtz_DFwL0HasHesrLiyP2UQ3LDfX0pOPobJkFJEVPJ6u9OWz1DcKoUKkPw_Iwx7JyBiByXLxtJtRkh7hyjAqfw5cngbL_QiMcnIT02eXIDHRp7YKZEuvBf3FKZ66fcI7hw4BumS7IL_69wyRLzvAxiHyh0Dw&__tn__=%2CO%2CP-R"
-              target="_blank">Link</a>)
-          </p>
+      <div class="comparative-analysis" style="margin-top:40px; display:none;">
+        <div class="row">
+          <h2>Competitive analysis</h2>
         </div>
-        <div class="column">
-          <p><b>Topics</b>: functionality, easy of use, overall satisfaction</p>
+        <div class="row">
+          <p>Below a topic comparison between your page and a competitor page</p>
+        </div>
+        <div class="row">
+          <table>
+            <thead>
+              <tr>
+                <td> <b>Page</b> </td>
+                <td><b>functionality</b></td>
+                <td><b>easy of use </b></td>
+                <td><b>overall satisfaction</b></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>"Example posts" page</td>
+                <td>2</td>
+                <td>1</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>"Wonderbit" page</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+            </tbody>
 
-        </div>
-      </div>
-
-      <div class="row">
-        <h4>Post 2</h4>
-      </div>
-      <div class="row">
-        <div class="column">
-          <p>
-            <i>this app works well</i>
-            (<a
-              href="https://www.facebook.com/permalink.php?story_fbid=558247501369444&id=558246594702868&__cft__[0]=AZWJ99zgFCIZEQ12kFVUpsZzgklNTWfiD2maXnG9n1a3O4ugNF4xEQ5niBgR0zFgMmDldxbBF72aqWbAqP_FJCrzxu2YBdaTPejyZSaNhfqXtkS6tEOTKZh_wwBXQ2Be5V8Oiln_y9TOWMMSc0Ouv6HD394BUUPOloZ6-58as0dq6A&__tn__=%2CO%2CP-R"
-              target="_blank">Link</a>)
-          </p>
-        </div>
-        <div class="column">
-          <p><b>Topics</b>: functionality</p>
+          </table>
         </div>
       </div>
     </div>
+
+
   </div>
 
 
@@ -133,6 +145,10 @@
       return new Promise((resolve) => {
         setTimeout(() => resolve(), ms)
       })
+    }
+    window.compare = function () {
+      document.querySelector('.comparative-analysis').style.display = 'block'
+      return false
     }
     window.startAnalysis = async function startAnalysis() {
       const pageName = 'pageName'
@@ -151,5 +167,15 @@
 
 
     }
+  </script>
+
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v11.0&appId=2630182130331751&autoLogAppEvents=1"
+    nonce="QSPHZDis"></script>
+  <script>
+    FB.Event.subscribe('xfbml.onlogin', () => {
+      alert('logged in')
+    })
   </script>
 </body>
